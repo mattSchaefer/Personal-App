@@ -1,0 +1,105 @@
+doctype html
+html(ng-app='personalPage')
+  head
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    base(href='/')
+    link(rel='stylesheet', type='text/css', href='stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', type='text/css', href='stylesheets/style.css')
+  body(ng-controller='AppCtrl', style="font-family: 'Raleway'; background: #bcd3ff", ng-init='init()')
+    // 9266cc
+    .container
+      div.row
+        .col-md-2(style='z-index: 2;')
+          .photo-main-heading
+            img#profile-image(src='images/profile_2.png', style='margin-top: 1em;')
+            h1 Matt Schaefer
+            p.hidden-md.hidden-lg.hidden-xl
+              span(ng-hide='deutsch') {{message}}
+              span(ng-show='deutsch') {{messageDeutsch}}
+          ul.nav.hidden-sm.hidden-xs(ng-hide='deutsch', ng-click='send()')
+            li(ng-click='navClick($event)')
+              a#home-btn.main-menu.active(href='/')  home
+            li(ng-click='navClick($event)')
+              a.main-menu(href='/about')  about
+            li(ng-click='navClick($event)')
+              a.main-menu(href='/photography')  photography
+            li(ng-click='navClick($event)')
+              a.main-menu(href='/projects')  projects
+          ul.nav.hidden-sm.hidden-xs(ng-show='deutsch', ng-click='send()')
+            li(ng-click='navClick($event)')
+              a.main-menu.home-btn(href='#/')  heim
+            li(ng-click='navClick($event)')
+              a.main-menu(href='/about')  über mich
+            li(ng-click='navClick($event)')
+              a.main-menu(href='/photography')  fotografie
+            li(ng-click='navClick($event)')
+              a.main-menu(href='/projects')  projekte
+          .dropdown.hidden-md.hidden-lg.hidden-xl.mobile-menu
+            button#dropdownMenu2.btn.btn-default.dropdown-toggle(type='button', aria-haspopup='true', aria-expanded='false' ng-click="dropClick()" style="height: 3em;")
+              .fa.fa-bars(aria-hidden="true")
+            ul.nav.mobile-list(aria-labelledby='dropdownMenu2' ng-show="showDropdown" ng-click="send(); dropClick()" style="width:  13em;")
+              li(ng-click='navClick($event)' ng-hide="deutsch")
+                a.main-menu.home-btn(href='/' ng-animate) home
+              li(ng-click='navClick($event)' ng-hide="deutsch")
+                a.main-menu.about-btn(href='/about' ng-animate) about
+              li(ng-click='navClick($event)' ng-hide="deutsch")
+                a.main-menu.photo-btn(href='/photography' ng-animate) photography
+              li(ng-click='navClick($event)' ng-hide="deutsch")
+                a.main-menu.project-btn(href='/projects' ng-animate) projects
+              li(ng-click='navClick($event)' ng-show="deutsch")
+                a.main-menu.home-btn(href='/')  heim
+              li(ng-click='navClick($event)' ng-show="deutsch")
+                a.main-menu.about-btn(href='/about')  über mich
+              li(ng-click='navClick($event)' ng-show="deutsch")
+                a.main-menu.photo-btn(href='/photography')  fotografie
+              li(ng-click='navClick($event)' ng-show="deutsch")
+                a.main-menu.project-btn(href='/projects')  projekte
+          p.hidden-sm.hidden-xs
+            span(ng-hide='deutsch') {{message}}
+            span(ng-show='deutsch') {{messageDeutsch}}
+        .col-md-9.col-md-offset-3(style='margin-left: 4% !important;')
+          .row(style='margin-left: 4% !important; margin-top: 1em; z-index:2;')
+            ul.nav.nav-pills(style='cursor: pointer; float: right;')
+              li#english.active(role='presentation', ng-click="langClick('english', 'german'); send()")
+                a en
+              li#german(role='presentation', ng-click="langClick('german', 'english'); send()")
+                a de
+          .spin-container.extra-margin
+            p.spin.hidden-sm.hidden-xs(ng-show='!deutsch' ng-animate) :-)
+            p.spin.hidden-sm.hidden-xs(ng-show='!deutsch' ng-animate) :-)
+            p.spin.hidden-sm.hidden-xs(ng-show='!deutsch' ng-animate) :-)
+            p.spin.hidden-sm.hidden-xs(ng-show='deutsch' ng-animate) :-(
+            p.spin.hidden-sm.hidden-xs(ng-show='deutsch' ng-animate) :-(
+            p.spin.hidden-sm.hidden-xs(ng-show='deutsch' ng-animate) :-(
+          .spin-container
+            p.spin.hidden-s.hidden-xs(ng-show='deutsch' ng-animate) :-)
+            p.spin.hidden-sm.hidden-xs(ng-show='deutsch' ng-animate) :-)
+            p.spin.hidden-sm.hidden-xs(ng-show='deutsch' ng-animate) :-)
+            p.spin.hidden-sm.hidden-xs(ng-show='!deutsch' ng-animate) :-(
+            p.spin.hidden-sm.hidden-xs(ng-show='!deutsch' ng-animate) :-(
+            p.spin.hidden-sm.hidden-xs(ng-show='!deutsch' ng-animate) :-(
+          // <canvas id="demoCanvas" width="500" height="300"></canvas>
+          .ui-view-container
+            .main-content.slide-in.col-xs-12(ng-view='', style='transition: 1.5s;')
+        //-   .home-container
+        //-       #welcome-message.slide(ng-show='home')
+        //-         p#welcome-message-text(style='font-size: 6em; max-height: 1.5em; background: #d1ffdf; padding-left: .25em; padding-right: .25em; bottom: 0;')
+        //-           span(ng-hide='deutsch')
+        //-             | welcome
+        //-             span.space to
+        //-             span.space the
+        //-             span.space site
+        //-           span(ng-show='deutsch')
+        //-             | wilkommen
+        //-             span.space in
+        //-             span.space die
+        //-             span.space seite
+    script(src="https://use.fontawesome.com/b111de9850.js")        
+    script(src='/javascripts/jquery.min.js')
+    script(src='javascripts/angular.min.js')
+    script(src='javascripts/angular-route.min.js')
+    script(src='javascripts/angular-animate.min.js')
+    script(src='javascripts/ui-bootstrap-tpls.min.js')
+    script(src='javascripts/carousel.js')
+    script(src='javascripts/modal.js')
+    script(src='javascripts/controller.js')

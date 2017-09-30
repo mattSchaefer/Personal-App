@@ -1,0 +1,30 @@
+.photography-container
+    .content
+        h1(style='margin-bottom: .5em;' ng-hide="deutsch") photography
+        h1(style='margin-bottom: .5em;' ng-show="deutsch") fotografie
+        .row
+          .col-lg-4.col-md-6.col-sm-6.col-xs-12.flex-card(data-target='#photo-carousel', ng-repeat='photo in (filteredList = (photos) | displayPage:currentPage-1:itemsPerPage | limitTo:itemsPerPage)', data-slide-to='{{photo.index}}' style="min-height: 13.5em;")
+                img.image-responsive.thumbnail(data-toggle='modal', data-target='#photo-modal', ng-src='{{photo.src}}', style='max-width: 250px; max-height: 175px;')
+          p(class="copyright" ng-hide="deutsch") © 2015-2017 Matthew Schaefer all rights reserved.
+          p(class="copyright" ng-show="deutsch") © 2015-2017 Matthew Schaefer alle Rechte vorbehalten.
+        ul(uib-pagination, items-per-page='itemsPerPage', boundary-links='true', total-items='photos.length', ng-model='currentPage', previous-text='<', next-text='>', first-text='<<', last-text='>>', max-size='maxSize', ng-change='pageChange()')
+        #photo-modal.photo-modal.modal.fade(role='dialog')
+          .modal-dialog.modal-lg
+            .modal-content(style='max-height: 90vh; max-width: 90vw;')
+              #photo-carousel.carousel.slide(data-ride='carousel' ng-init='init()')
+                //- ol.carousel-indicators
+                //-   li.active(data-target='#photo-carousel', data-slide-to='0')
+                //-   li(data-target='#photo-carousel', data-slide-to='1')
+                //-   li(data-target='#photo-carousel', data-slide-to='2')
+                .carousel-inner(role='listbox', style='max-height: 90vh;')
+                    .item(ng-repeat='photo in photos' ng-class="{'active' : {{$index}} == 0 }")
+                        img.image-responsive(ng-src='{{photo.src}}')
+                a.left.carousel-control(data-target='#photo-carousel', role='button', data-slide='prev', style='margin-left: -8vw;')
+                  span.fa.fa-angle-left(aria-hidden='true')
+                  span.sr-only Previous
+                a.right.carousel-control(data-target='#photo-carousel', role='button', data-slide='next', style='margin-right: -8vw;')
+                  span.fa.fa-angle-right(aria-hidden='true')
+                  span.sr-only Next
+            p(id="modal-copy" style="position: fixed; top: 69vh;" ng-hide="deutsch") © 2015-2017 Matthew Schaefer all rights reserved.
+            p(id="modal-copy" style="position: fixed; top: 69vh;" ng-show="deutsch") © 2015-2017 Matthew Schaefer alle Rechte vorbehalten.
+// <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

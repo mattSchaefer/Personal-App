@@ -1,0 +1,14 @@
+.projects-container
+    .content
+        h1(ng-hide="deutsch") projects
+        h1(ng-show="deutsch") projekte
+        .row.projects-list-container
+          ul(style='list-style: none; margin-left: 20%;\
+          margin-top: 2em;')
+            li
+              a(href='/do-i-need-a-raincoat' ng-hide="deutsch") do i need a raincoat?
+              a(href='/do-i-need-a-raincoat' ng-show="deutsch") brauch ich einen regenmantel?
+            li(style='margin-top: 1em;')
+              a(href='/canvas') canvas
+            li(style='margin-top: 1em;')
+              a(href='/twitter-bot') twitter bot

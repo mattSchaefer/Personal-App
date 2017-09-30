@@ -1,0 +1,51 @@
+link(href='stylesheets/raincoat.css', rel='stylesheet')
+.raincoat-container
+    .content
+        h1(ng-hide='deutsch') do i need a raincoat?
+        h1(ng-show='deutsch') brauch ich einen regenmantel?
+        div(ng-hide='userSubmitted')
+          .row(style='margin-top: 3em; margin-bottom: 3em;')
+            .col-md-4.col-lg-4.city
+              label(for='city-input')
+                span(ng-hide='deutsch') city:
+                span(ng-show='deutsch') stadt:
+              input#city-input(ng-model='city', placeholder='columbus', required='')
+            .col-md-4.col-lg-4
+              label(for='state-input')
+                span(ng-hide='deutsch') state:
+                span(ng-show='deutsch') staat:
+              input#state-input(ng-model='stateAbbrev', placeholder='oh', maxlength='2', required='')
+              .submit-btn-div
+                button#submit-btn(ng-click='checkForRain()')
+                  span(ng-hide='deutsch') please, tell me
+                  span(ng-show='deutsch') bitte, sag mir
+        .row.raincoat-row(style='min-height: 7em;', ng-show='userSubmitted')
+          .col-md-5.col-lg-5
+            span(ng-show='userSubmitted')
+              h1(style='font-size: 7em' ng-hide='deutsch') {{needsRaincoat}}
+              h1(style='font-size: 7em' ng-show='deutsch') {{needsRaincoatDeutsch}}
+              a.toggle-details-container(ng-click='toggleDetails()')
+                p(style='margin: 0 !important') details 
+                i.fa.fa-plus(ng-hide='detailsActive' style="font-size: 1em !important;")
+                i.fa.fa-minus(ng-show='detailsActive' style="font-size: 1em !important;")
+          div
+        .row
+          .panel.panel.primary.col-md-8.col-lg-8.rain-panel(ng-show='detailsActive')
+            .panel-body
+              span(ng-show="needsRaincoat == 'prolly'")
+                span(ng-hide='deutsch')
+                  | its supposed to rain {{weatherData.current_observation.precip_today_string}} today-
+                  br
+                  |  {{weatherData.current_observation.precip_1hr_string}} within the next hour.
+                span(ng-show='deutsch')
+                  | heute soll es {{weatherData.current_observation.precip_today_string}} regnen- 
+                  br
+                  |  {{weatherData.current_observation.precip_1hr_string}} innerhalb das naechtste Stunde.
+              span(ng-hide="needsRaincoat == 'prolly'")
+                span(ng-hide='deutsch')
+                  | it's not supposed to rain at all today.
+                span(ng-show='deutsch') heute soll es ueberhaupt nicht regnen.
+            .check-another
+              a(ng-click='userSubmitted = false; detailsActive = false;', style='cursor: pointer;')
+                span(ng-hide='deutsch') check another city
+                span(ng-show='deutsch') eine andere stadt ueberpruefen

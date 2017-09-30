@@ -1,0 +1,24 @@
+.about-container(ng-controller='AboutController')
+  .content
+    .english(ng-hide='deutsch')
+      h2 about
+      p
+        | I'm Matt Schaefer, a third-year at the Ohio State University studying German
+        | and Computer Science.  Over the past year or so working at my student position at the OCIO of The Ohio State University,
+        | I have further developed my skills with AngularJS, AJAX protocol, the Service Now platform and terminology, accessibility protocol, server-side and client-side JS, CSS, and HTML. My interests include: web development, music, german,
+        | dogs, betta fish, plants, art, soccer, and a few other things, too.  I am always
+        | trying to be better.  I was born in Sherman, TX and at the age of 4 moved to Jackson,
+        | Tennessee where I lived until moving to Cincinnati when I was about 14.  I played,
+        | soccer throughout my childhood.  I play the bass, too.
+      a(href='/') back
+    .deutsch(ng-show='deutsch')
+      h2  über mich
+      p
+        | Ich bin Matt Schaefer, und ich studiere Deutsch und Informatik an der Ohio
+        | State University seit 3 Jahren.  Waehrend des lezten Jahres oder so habe ich meine Kenntnisse mit ngularJS, AJAX Protokoll, the Service-Now Platform und Fachwortschatz, Accessibility Protokoll, server-side und client-side JS, CSS, and HTML weiter entwickelt.  Webentwickelung, Musik, Deutsch, Hunde,
+        | Pflanzen, Kunst, Fuβball, und noch ein Paar Dinge zählen zu meine Interresse.
+        | Ich versuche immer, besser zu sein.  Ich wurde in Sherman,TX geboren,
+        | und bin nach 4 Jahren nach Tennessee gezogen, wo ich bis der vierzehnten
+        | Jahre lebte, als ich nach Cincinnati zog.  Als Kind spielte ich Fuβball.  Auch spiele
+        | ich die Bass.
+      a(href='/') zurück
